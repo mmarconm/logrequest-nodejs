@@ -2,10 +2,19 @@ const express = require("express");
 const multer = require("multer");
 const crypto = require("crypto");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
+
+var corsOptions = {
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors());
+app.use("/static", express.static(__dirname + "/public"));
 
 const storage = multer.diskStorage({
     // This func configures the storage folder for multer and add a random hash for the name
@@ -31,7 +40,7 @@ app.set("view engine", "ejs"); // setting up the engine for html
 
 app.get("/", (req, res) => {
     // main page where the user will upload the file
-    res.render("home");
+    res.render("request");
 });
 
 app.post("/upload", upload.single("file"), (req, res) => {
