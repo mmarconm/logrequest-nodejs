@@ -1,6 +1,9 @@
 const express = require("express");
 const multer = require("multer");
 const crypto = require("crypto");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
 
@@ -33,6 +36,18 @@ app.post("/upload", upload.single("file"), (req, res) => {
     res.send("arquivo enviado");
 });
 
-app.listen(3000, () => {
-    console.log("Servidor Rodando");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
+
+// Error handler middleware
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send({
+        status: 500,
+        message: err.message,
+        body: {},
+    });
 });
