@@ -1,4 +1,4 @@
-# Log Request integration with Help Desk
+# Log Request integration with HelpDesk
 
 > Sistema de envio de logs integrado com soluções de chamado que solicitam para o cliente os arquivos de logs para serem analisado
 
@@ -6,14 +6,14 @@
 ## TODO List
 
 - [x] 1 - Criação da pagina de envio de arquivos
-- [x] 2 - Criação da função storage que trata o arquivo e renomea adicionando a hash para evitar duplicidade - multer
+- [x] 2 - Criação da função storage que trata o arquivo e renomea adicionando a hash para evitar duplicidade - (multer)
 - [x] 3 - Pagina de redirecionamento que vai informar o usuário que o arquivo foi enviado.
-- [x] 4 - Pagina de /upload que realizirá o tratamento do arquivo usando o multer
+- [x] 4 - Pagina de /upload que realizirá o tratamento do arquivo usando o multer.
 - [ ] 5 - Adicionar barra de progresso para informar o usuário o quanto foi realizado de upload.
-- [ ] 6 - Bloquear pagina de envio para que não possa ser acessa ser ser enviado pela API externa. N do Chamado
+- [ ] 6 - Bloquear pagina de envio para que não possa ser acessa sem ser enviado pela API externa. (Numero do Chamado)
 - [ ] 7 - Adicionar axios para realizar a requisição e enviar o link do arquivo enviado e alteração do estado do chamado com as informações.
-- [ ] 8 - configurar a soluçao de chamado para receber a requisição. token, api, envio, chamado.
-- [ ] 9 - Subir para ambiente de homologação
+- [ ] 8 - configurar a soluçao HelpDesk para receber a requisição. token, api, envio, chamado.
+- [ ] 9 - Subir para ambiente de homologação.
 
 ### informações adicionais do TODO List.
 
