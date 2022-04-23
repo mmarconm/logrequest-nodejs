@@ -8,6 +8,7 @@ dotenv.config();
 const app = express();
 
 const storage = multer.diskStorage({
+    // This func configures the storage folder for multer and add a random hash for the name
     destination: function (req, file, cb) {
         cb(null, "media/");
     },
@@ -24,20 +25,22 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage }); // configure the multer with storage function
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); // setting up the engine for html
 
 app.get("/", (req, res) => {
+    // main page where the user will upload the file
     res.render("home");
 });
 
 app.post("/upload", upload.single("file"), (req, res) => {
+    // Route where handle the file request to be uploaded
     res.send("arquivo enviado");
 });
 
+// configuration of the port and error handle
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
