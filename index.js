@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.post("/upload", upload.single("file"), (req, res) => {
     // Route where handle the file request to be uploaded
-    res.send("arquivo enviado");
+    res.render("redirect");
 });
 
 // configuration of the port and error handle
