@@ -11,6 +11,7 @@
 - [x] 4 - Pagina de /upload que realizirá o tratamento do arquivo usando o multer.
 - [x] 5 - Adicionar barra de progresso para informar o usuário o quanto foi realizado de upload.
 - [x] 5.1 - Adicionar redirecionamento da pagina após o upload finalizar.
+- [x] 5.2 - Alterado para poder enviar multiples arquivos ( 10 ) ao mesmo tempo.
 - [ ] 6 - Enviar o post para a solução com o link para download do log
 - [ ] 7 - Bloquear pagina de envio para que não possa ser acessa sem ser enviado pela API externa. (Numero do Chamado)
 - [ ] 8 - Configurar a soluçao HelpDesk para receber a requisição. token, api, envio, chamado.

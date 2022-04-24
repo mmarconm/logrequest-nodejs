@@ -8,10 +8,10 @@ dotenv.config();
 
 const app = express();
 
-var corsOptions = {
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// var corsOptions = {
+//     origin: "http://localhost:3000",
+//     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
 app.use(cors());
 app.use("/static", express.static(__dirname + "/public"));
@@ -35,6 +35,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage }); // configure the multer with storage function
+const uploadMultiple  = upload.fields([{ name: "file", maxCount: 10 }]);
 
 app.set("view engine", "ejs"); // setting up the engine for html
 
@@ -48,10 +49,12 @@ app.get("/success", (req, res) => {
     res.render("redirect");
 });
 
-app.post("/upload", upload.single("file"), (req, res, next) => {
+app.post("/upload", uploadMultiple , (req, res, next) => {
     // Route where handle the file request to be uploaded
-    // res.redirect(307, "/success");
-    next();
+    if (req.files) {
+        next();
+    }
+
 });
 
 // configuration of the port and error handle
