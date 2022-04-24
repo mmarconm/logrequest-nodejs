@@ -38,14 +38,20 @@ const upload = multer({ storage }); // configure the multer with storage functio
 
 app.set("view engine", "ejs"); // setting up the engine for html
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
     // main page where the user will upload the file
     res.render("request");
 });
 
-app.post("/upload", upload.single("file"), (req, res) => {
-    // Route where handle the file request to be uploaded
+app.get("/success", (req, res) => {
+    // main page where the user will upload the file
     res.render("redirect");
+});
+
+app.post("/upload", upload.single("file"), (req, res, next) => {
+    // Route where handle the file request to be uploaded
+    // res.redirect(307, "/success");
+    next();
 });
 
 // configuration of the port and error handle

@@ -66,13 +66,16 @@
             const xhr = new XMLHttpRequest();
             xhr.open('POST', "//localhost:3000/upload", true);
             xhr.upload.addEventListener("progress", e => {
-                console.log(e);
+                // console.log(e);
                 const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
 
                 progressBar.style.width = percent.toFixed(2) + "%"
             })
 
-            // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+            xhr.upload.onloadend = function (e) {
+                window.location.href = "http://localhost:3000/success";
+            }
+
             xhr.send(new FormData(uploadForm))
         }
 
