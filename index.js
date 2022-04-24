@@ -35,7 +35,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage }); // configure the multer with storage function
-const uploadMultiple  = upload.fields([{ name: "file", maxCount: 10 }]);
+// const uploadMultiple  = upload.fields([{ name: "file", maxCount: 10 }, { name: "fImagens", maxCount: 10 }]);
+const uploadMultiple  = upload.fields([{ name: "file", maxCount: 1 }]);
 
 app.set("view engine", "ejs"); // setting up the engine for html
 

@@ -22,26 +22,35 @@
                 <p class="alert alert-danger mt-3">
                     Pasta de logs fica localizada dentro da pasta de instalação da
                     solução.
-                    <br />Ex:
-                    <b>'C:\Program Files\ManageEngine\ServiceDesk Plus\Logs'</b>.
-                    <br /> Se a solução estiver em execução, copie a pasta de logs para
-                    outro lugar, e compacte-a no formato zip.
+                    <br>
+                    <b>Ex: 'C:\Program Files\Ferramenta\Logs'</b>.
+                    <br>
+                    <br /> Se houver mais de um arquivo de log, pastas ou imagens de erro como
+                    screenshots.
+                    <br>
+                    compacte-os no formato zip ou 7z. e anexe!.
                 </p>
                 <form method="post" enctype="multipart/form-data" class="form-group"
                     id="uploadForm">
                     <div>
-                        <label for="inpFile" class="form-label">Anexe arquivo zip ou
-                            7zip!</label>
+                        <label for="inpFile" class="form-label">Anexo de arquivo <b>zip ou
+                                7z</b></label>
                         <input class="form-control form-control" id="inpFile" type="file"
-                            name="file" multiple required>
+                            name="file" required>
+                        <!-- <br>
+                        <label for="inpFileImage" class="form-label">Anexe até 10 arquivos e <b>imagens</b> como
+                            Screenshots, Erros, Etc...</label>
+                        <input class="form-control form-control" id="inpFileImage" type="file"
+                            name="fImagens" multiple> -->
                         <button type="submit"
                             class="mt-3 btn btn-primary btn-block btn-lg">Enviar</button>
                     </div>
                     <br>
-                    <div class="progress" id="progressBar">
-                        <div id="progress-bar-id" class="progress-bar progress-bar-animation"
+                    <div class="progress" id="progressBar" style="height: 30px;">
+                        <div id="progress-bar-id" class="progress-bar progress-bar-striped"
                             role="progressbar" style="width: 0%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            aria-valuemin="0" aria-valuemax="100"><span style="font-weight: bold;" id="progress-text"></span>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -55,8 +64,7 @@
     <script>
 
         const uploadForm = document.getElementById('uploadForm')
-        const inpFile = document.getElementById('inpFile')
-
+        const progressText = document.getElementById('progress-text')
         const progressBar = document.querySelector('#progressBar > .progress-bar')
 
         uploadForm.addEventListener('submit', uploadFile);
@@ -68,8 +76,8 @@
             xhr.upload.addEventListener("progress", e => {
                 // console.log(e);
                 const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-
                 progressBar.style.width = percent.toFixed(2) + "%"
+                progressText.innerText = percent.toFixed(2) + "%"
             })
 
             xhr.upload.onloadend = function (e) {
@@ -78,7 +86,6 @@
 
             xhr.send(new FormData(uploadForm))
         }
-
 
     </script>
 </body>
