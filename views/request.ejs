@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <title>ACSoftware</title>
+    <title>LogRequest</title>
 </head>
 
 <body>
@@ -47,47 +47,22 @@
                     </div>
                     <br>
                     <div class="progress" id="progressBar" style="height: 30px;">
-                        <div id="progress-bar-id" class="progress-bar progress-bar-striped"
+                        <div id="progress-bar-id" class="progress-bar progress-bar-striped progress-bar-animated"
                             role="progressbar" style="width: 0%" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"><span style="font-weight: bold;" id="progress-text"></span>
+                            aria-valuemin="0" aria-valuemax="100"><span style="font-weight: bold;"
+                                id="progress-text"></span>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="static/js/upload_file.js"></script>
 
-    <!-- <script>
-
-        const uploadForm = document.getElementById('uploadForm')
-        const progressText = document.getElementById('progress-text')
-        const progressBar = document.querySelector('#progressBar > .progress-bar')
-
-        uploadForm.addEventListener('submit', uploadFile);
-
-        function uploadFile(e) {
-            e.preventDefault();
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', "//localhost:3000/upload", true);
-            xhr.upload.addEventListener("progress", e => {
-                // console.log(e);
-                const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-                progressBar.style.width = percent.toFixed(2) + "%"
-                progressText.innerText = percent.toFixed(2) + "%"
-            })
-
-            xhr.upload.onloadend = function (e) {
-                window.location.href = "http://localhost:3000/success";
-            }
-
-            xhr.send(new FormData(uploadForm))
-        }
-
-    </script> -->
 </body>
 
 </html>
